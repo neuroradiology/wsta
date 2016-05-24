@@ -56,8 +56,7 @@ main() {
 
     case "$TRAVIS_OS_NAME" in
         linux)
-            sudo apt-get -qq update
-            sudo apt-get install -y libssl-dev
+            sudo apt-get install -y --no-install-recommends libssl-dev
             ;;
         osx)
             brew update
