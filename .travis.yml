@@ -50,6 +50,7 @@ matrix:
     # - os: linux
     #   rust: stable
     #   env: TARGET=i686-unknown-linux-gnu
+    #   sudo: required
     #   addons:
     #     apt:
     #       packages: &i686_unknown_linux_gnu
@@ -58,15 +59,18 @@ matrix:
     # - os: linux
     #   rust: stable
     #   env: TARGET=i686-unknown-linux-musl
+    #   sudo: required
     # - os: osx
     #   rust: stable
     #   env: TARGET=x86_64-apple-darwin
     # - os: linux
     #   rust: stable
     #   env: TARGET=x86_64-unknown-linux-gnu
+    #   sudo: required
     # - os: linux
     #   rust: stable
     #   env: TARGET=x86_64-unknown-linux-musl
+    #   sudo: required
     # Beta channel
     - os: linux
       rust: beta
@@ -90,21 +94,25 @@ matrix:
     - os: linux
       rust: beta
       env: TARGET=i686-unknown-linux-gnu
+      sudo: required
       addons:
         apt:
           packages: *i686_unknown_linux_gnu
     - os: linux
       rust: beta
       env: TARGET=i686-unknown-linux-musl
+      sudo: required
     - os: osx
       rust: beta
       env: TARGET=x86_64-apple-darwin
     - os: linux
       rust: beta
       env: TARGET=x86_64-unknown-linux-gnu
+      sudo: required
     - os: linux
       rust: beta
       env: TARGET=x86_64-unknown-linux-musl
+      sudo: required
     # Nightly channel
     - os: linux
       rust: nightly
@@ -128,21 +136,25 @@ matrix:
     - os: linux
       rust: nightly
       env: TARGET=i686-unknown-linux-gnu
+      sudo: required
       addons:
         apt:
           packages: *i686_unknown_linux_gnu
     - os: linux
       rust: nightly
       env: TARGET=i686-unknown-linux-musl
+      sudo: required
     - os: osx
       rust: nightly
       env: TARGET=x86_64-apple-darwin
     - os: linux
       rust: nightly
       env: TARGET=x86_64-unknown-linux-gnu
+      sudo: required
     - os: linux
       rust: nightly
       env: TARGET=x86_64-unknown-linux-musl
+      sudo: required
   allow_failures:
     # Target `i686-unknown-linux-musl` is currently only available on the nightly channel
     - os: linux
