@@ -57,6 +57,10 @@ main() {
     case "$TRAVIS_OS_NAME" in
         linux)
             sudo apt-get install -y --no-install-recommends libssl-dev
+
+            if [ $(architecture) == "i386" ]; then
+              sudo apt-get install libc6-dev-i386
+            fi
             ;;
         osx)
             brew update
