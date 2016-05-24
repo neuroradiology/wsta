@@ -56,7 +56,7 @@ main() {
 
     case "$TRAVIS_OS_NAME" in
         linux)
-            sudo apt-get install -y --no-install-recommends libssl-dev libc6-dev
+            sudo apt-get install -y --no-install-recommends libssl-dev libc6-dev gcc-multilib
             ;;
         osx)
             brew update
