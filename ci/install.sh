@@ -54,13 +54,16 @@ main() {
     install_standard_crates
     configure_cargo
 
-    if [ $(host) == "linux" ]; then
-      sudo apt-get -qq update
-      sudo apt-get install -y libssl-dev
-    elif [ $(host) == "osx" ]; then
-      brew update
-      brew install openssl
-    fi
+    case "$TRAVIS_OS_NAME" in
+        linux)
+            sudo apt-get -qq update
+            sudo apt-get install -y libssl-dev
+            ;;
+        osx)
+            brew update
+            brew install openssl
+            ;;
+    esac
 }
 
 main
