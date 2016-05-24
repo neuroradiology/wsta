@@ -53,6 +53,14 @@ main() {
     install_rustup
     install_standard_crates
     configure_cargo
+
+    if [ host() == "linux" ]; then
+      sudo apt-get -qq update
+      sudo apt-get install -y libssl-dev
+    elif [ host() == "osx" ]; then
+      brew update
+      brew install openssl
+    fi
 }
 
 main
