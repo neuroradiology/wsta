@@ -59,7 +59,7 @@ main() {
 
             # libssl-dev is in backports for ARM
             if [[ "$(architecture $TARGET)" == arm* ]]; then
-              sudo sh -c 'echo "deb http://ports.ubuntu.com/ubuntu-ports trusty-backports main restricted universe multiverse" >> /etc/apt/sources.list'
+              sudo sh -c 'echo "deb [arch=arm64,armhf] http://ports.ubuntu.com/ubuntu-ports trusty-backports main restricted universe multiverse" >> /etc/apt/sources.list'
             fi
 
             sudo apt-get update -qq
