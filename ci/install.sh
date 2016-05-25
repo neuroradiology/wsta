@@ -58,7 +58,7 @@ main() {
         linux)
             sudo apt-get update -qq
 
-            case "$(architecture)" in
+            case "$(architecture $TARGET)" in
                 amd64)
                     sudo apt-get install -y libssl-dev
                     ;;
