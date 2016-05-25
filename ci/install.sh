@@ -59,12 +59,12 @@ main() {
 
             # libssl-dev is in backports for ARM
             if [[ "$(architecture $TARGET)" == arm* ]]; then
-              sudo sh -c 'echo "deb [arch=arm64,armhf] http://ports.ubuntu.com/ trusty main universe" >> /etc/apt/sources.list'
+              sudo sh -c 'echo "deb [arch=arm64,armhf] http://ports.ubuntu.com trusty main universe" >> /etc/apt/sources.list'
               sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1397BC53640DB551
             fi
 
-            sudo apt-get update -qq
-            sudo apt-get install -y libssl-dev:$(architecture $TARGET) gcc-multilib
+            sudo apt-get update -q
+            sudo apt-get install -y --no-install-recommends libssl-dev:$(architecture $TARGET) gcc-multilib
             ;;
         osx)
             brew update
