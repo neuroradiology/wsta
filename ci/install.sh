@@ -59,7 +59,7 @@ main() {
 
             # libssl-dev is in backports for ARM
             if [[ "$(architecture $TARGET)" == arm* ]]; then
-              sudo sh -c 'echo "deb [arch=i386,amd64] http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list'
+              sudo sed -i 's/deb/deb [arch=amd64]/' /etc/apt/sources.list
               sudo sh -c 'echo "deb [arch=arm64,armhf] http://ports.ubuntu.com trusty main universe" >> /etc/apt/sources.list'
               sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1397BC53640DB551
               sudo dpkg --add-architecture $(architecture $TARGET)
