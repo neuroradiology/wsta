@@ -49,6 +49,9 @@ architecture() {
         arm*-unknown-linux-gnueabihf)
             echo armhf
             ;;
+        aarch64-unknown-linux-gnu)
+            echo armel
+            ;;
         *)
             die "architecture: unexpected target $TARGET"
             ;;

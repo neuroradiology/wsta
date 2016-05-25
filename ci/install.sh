@@ -57,16 +57,7 @@ main() {
     case "$TRAVIS_OS_NAME" in
         linux)
             sudo apt-get update -qq
-
-            case "$(architecture $TARGET)" in
-                amd64)
-                    sudo apt-get install -y libssl-dev
-                    ;;
-                i386)
-                    sudo apt-get install -y libssl-dev:i386 gcc-multilib
-                    ;;
-            esac
-
+            sudo apt-get install -y libssl-dev:$(architecture $TARGET) gcc-multilib
             ;;
         osx)
             brew update
