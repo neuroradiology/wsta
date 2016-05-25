@@ -63,7 +63,7 @@ main() {
                     sudo apt-get install -y libssl-dev
                     ;;
                 i386)
-                    sudo apt-get install -y libssl-dev:i386
+                    sudo apt-get install -y libssl-dev:i386 gcc-multilib
                     ;;
             esac
 
