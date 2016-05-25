@@ -79,7 +79,10 @@ matrix:
       sudo: required
       addons:
         apt:
-          packages: *aarch64_unknown_linux_gnu
+          packages: &aarch64_unknown_linux_gnu
+            # Transparent emulation
+            - qemu-user-static
+            - binfmt-support
     - os: linux
       rust: beta
       env: TARGET=armv7-unknown-linux-gnueabihf
@@ -87,7 +90,14 @@ matrix:
       addons:
         apt:
           # Use the same packages the stable version uses
-          packages: *armv7_unknown_linux_gnueabihf
+          packages: &armv7_unknown_linux_gnueabihf
+            # Cross compiler and cross compiled C libraries
+            - gcc-arm-linux-gnueabihf
+            - libc6-armhf-cross
+            - libc6-dev-armhf-cross
+            # Transparent emulation
+            - qemu-user-static
+            - binfmt-support
     - os: osx
       rust: beta
       env: TARGET=i686-apple-darwin
@@ -97,7 +107,9 @@ matrix:
       sudo: required
       addons:
         apt:
-          packages: *i686_unknown_linux_gnu
+          packages: &i686_unknown_linux_gnu
+            # Cross compiler and cross compiled C libraries
+            - gcc-multilib
     - os: linux
       rust: beta
       env: TARGET=i686-unknown-linux-musl
