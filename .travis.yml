@@ -86,6 +86,7 @@ matrix:
     - os: linux
       rust: beta
       env: TARGET=armv7-unknown-linux-gnueabihf
+      dist: trusty
       sudo: required
       addons:
         apt:
@@ -137,6 +138,7 @@ matrix:
     - os: linux
       rust: nightly
       env: TARGET=armv7-unknown-linux-gnueabihf
+      dist: trusty
       sudo: required
       addons:
         apt:
