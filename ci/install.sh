@@ -8,11 +8,13 @@ install_c_toolchain() {
     case $TARGET in
         aarch64-unknown-linux-gnu)
             sudo apt-get install -y --no-install-recommends \
-                 gcc-aarch64-linux-gnu libc6-arm64-cross libc6-dev-arm64-cross
+                 gcc-aarch64-linux-gnu libc6-arm64-cross libc6-dev-arm64-cross \
+                 lib32z1 lib32ncurses5 lib32bz2-1.0
             ;;
         armv7-unknown-linux-gnueabihf)
             sudo apt-get install -y --no-install-recommends \
-                gcc-arm-linux-gnueabihf libc6-armhf-cross libc6-dev-armhf-cross
+                gcc-arm-linux-gnueabihf libc6-armhf-cross libc6-dev-armhf-cross \
+                lib32z1 lib32ncurses5 lib32bz2-1.0
             ;;
         *)
             # For other targets, this is handled by addons.apt.packages in .travis.yml
@@ -72,7 +74,7 @@ main() {
               sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1397BC53640DB551
             fi
 
-            sudo aptitude update
+            sudo aptitude update -qq
             sudo aptitude install -y --without-recommends \
               "libssl-dev:$(architecture $TARGET)" gcc-multilib
             ;;
