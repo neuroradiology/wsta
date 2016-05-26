@@ -94,6 +94,7 @@ matrix:
           packages: &armv7_unknown_linux_gnueabihf
             # Cross compiler and cross compiled C libraries
             - gcc-arm-linux-gnueabihf
+            - arm-linux-gnueabihf-gcc
             - libc6-armhf-cross
             - libc6-dev-armhf-cross
             # Transparent emulation
