@@ -74,7 +74,7 @@ main() {
               sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1397BC53640DB551
             fi
 
-            sudo aptitude update -qq
+            sudo aptitude update -q2
             sudo aptitude install -y --without-recommends \
               "libssl-dev:$(architecture $TARGET)" gcc-multilib
             ;;
