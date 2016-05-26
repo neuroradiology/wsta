@@ -56,17 +56,20 @@ main() {
 
     case "$TRAVIS_OS_NAME" in
         linux)
+            # Not sure what I am doing wrong, but apt-get cannot handle
+            # libssl:arm* - it generates a conflict which is unresolvable
+            # and then fails the entire build
+            sudo apt-get install -y aptitude
 
             # libssl-dev is in backports for ARM
             if [[ "$(architecture $TARGET)" == arm* ]]; then
-              sudo sed -i 's/deb/deb [arch=amd64]/' /etc/apt/sources.list
+
+              sudo sed -i 's/deb /deb [arch=amd64] /' /etc/apt/sources.list
               sudo sh -c 'echo "deb [arch=arm64,armhf] http://ports.ubuntu.com trusty main universe" >> /etc/apt/sources.list'
-              sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1397BC53640DB551
-              sudo dpkg --add-architecture $(architecture $TARGET)
             fi
 
-            sudo apt-get update -qq
-            sudo apt-get install -y --no-install-recommends libssl-dev:$(architecture $TARGET) gcc-multilib
+            sudo aptitude update -q2
+            sudo aptitude install -y --without-recommends libssl-dev:$(architecture $TARGET) gcc-multilib
             ;;
         osx)
             brew update
