@@ -8,8 +8,11 @@ install_c_toolchain() {
     case $TARGET in
         aarch64-unknown-linux-gnu)
             sudo apt-get install -y --no-install-recommends \
-                 gcc-aarch64-linux-gnu libc6-arm64-cross libc6-dev-arm64-cross \
-                 aarch64-linux-gnu-gcc
+                 gcc-aarch64-linux-gnu libc6-arm64-cross libc6-dev-arm64-cross
+            ;;
+        armv7-unknown-linux-gnueabihf)
+            sudo apt-get install -y --no-install-recommends \
+                gcc-arm-linux-gnueabihf libc6-armhf-cross libc6-dev-armhf-cross
             ;;
         *)
             # For other targets, this is handled by addons.apt.packages in .travis.yml
