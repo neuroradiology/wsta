@@ -39,8 +39,9 @@ run_test_suite() {
     fi
 
     # Statically link OpenSSL
-    export OPENSSL_LIB_DIR=/usr/lib
-    export OPENSSL_INCLUDE_DIR=/usr/include
+    ls /usr/lib /usr/local/lib
+    export OPENSSL_LIB_DIR=/usr/local/lib
+    #export OPENSSL_INCLUDE_DIR=/usr/local/include
     export OPENSSL_STATIC=yes
 
     cargo build --target $TARGET --verbose
