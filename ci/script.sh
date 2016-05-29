@@ -38,6 +38,11 @@ run_test_suite() {
         export RUST_TEST_THREADS=1
     fi
 
+    # Statically link OpenSSL
+    export OPENSSL_LIB_DIR=/usr/lib
+    export OPENSSL_INCLUDE_DIR=/usr/include
+    export OPENSSL_STATIC=yes
+
     cargo build --target $TARGET --verbose
     cargo run --target $TARGET -- --help
     cargo test --target $TARGET
